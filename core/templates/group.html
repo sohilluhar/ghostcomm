@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to the Group - {{ group.topic }}</h1>
+<p>Group ID: {{ group.group_id }}</p>
+
+<h2>Messages</h2>
+<div class="message-box">
+    {% for message in messages %}
+        <p><strong>{{ message.anon_name }}</strong>: {{ message.get_decrypted_content  }}</p>
+    {% empty %}
+        <p>No messages yet.</p>
+    {% endfor %}
+</div>
+
+<h3>Post a Message</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post</button>
+</form>
+<!-- "Leave Group" Button -->
+<form action="/" method="post">
+    {% csrf_token %}
+    <button type="submit">Leave Group</button>
+</for
+{% endblock %}

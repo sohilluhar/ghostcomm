@@ -1,0 +1,24 @@
+<!-- core/templates/core/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Welcome to the GhostComm</h1>
+    <p>Here you can view and join various groups. Select a group and start anonymous discussions!</p>
+<a href="{% url 'create_group'  %}" class="join-btn">Create Group</a>
+<a href="{% url 'join_group'  %}" class="join-btn">Join Group</a>
+    <div class="group-list">
+        {% for group in groups %}
+        <div class="group-item">
+            <h3>{{ group.topic }}</h3>
+            <p>Group ID: {{ group.group_id }}</p>
+            <a href="{% url 'view_group' group_id=group.group_id %}" class="join-btn">Join Group</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<footer>
+    <p>&copy; 2025 GhostComm | All Rights Reserved</p>
+</footer>
+{% endblock %}

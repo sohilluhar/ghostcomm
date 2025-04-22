@@ -1,0 +1,3 @@
+<h2>Join a Group</h2>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Join</button></form>
+<a href="{% url 'home' %}">Back</a>
